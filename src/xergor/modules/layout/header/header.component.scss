@@ -7,7 +7,7 @@
     padding: 0;
     position: fixed;
     top: 0;
- 
+
     .xergor-head-content {
         background-color: #024554;
         border-radius: 0.625rem;
@@ -76,8 +76,8 @@
                 .xergor-head-menu-item {
                     .xergor-head-menu-item-btn {
                         font-size: 18px;
-                        height: 42px;
-                        width: 42px;
+                        height: 40px;
+                        width: 40px;
                         cursor: pointer;
                         border: 1px solid transparent;
                         border-radius: 50%;
@@ -93,6 +93,7 @@
                         }
                     }
                 }
+
             }
 
             .xergor-head-user-avatar-container {
@@ -101,28 +102,16 @@
                 .xergor-head-user-avatar {
                     position: relative;
 
-                    .xergor-user-avatar {
+                    .xergor-user-avatar-container {
                         margin-bottom: -4px;
-                        width: 50px;
+                        height: 40px;
+                        width: 40px;
+                        border: 1px solid gray;
                         border-radius: 10px;
                         box-shadow: 0 0 15px rgb(35 35 35 / 15%);
                         cursor: pointer;
                     }
 
-                }
-
-                .xergor-circle-indicator {
-                    width: 8px;
-                    height: 8px;
-                    border-radius: 50%;
-                    position: absolute;
-                    top: -2px;
-                    right: -3px;
-                    background: #699dfa;
-
-                    &.pulse {
-                        animation: pulse-animation 1.2s infinite;
-                    }
                 }
             }
         }
@@ -228,7 +217,7 @@
 
 .xergor-overlay-user {
     ul {
-        padding: 0.5rem 0;
+        padding: 0.2rem 0;
         list-style: none;
         width: 10rem;
 
@@ -239,8 +228,19 @@
             color: #495057;
             cursor: pointer;
 
-            .xergor-icon {
-                margin-right: 0.6rem;
+            .user-links {
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+       
+                .xergor-icon {
+                    margin-right: 0.6rem;
+                    font-size: larger;
+                }
+
+                .xergor-text {
+                    font-size: larger;
+                }
             }
         }
 

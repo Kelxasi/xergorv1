@@ -19,15 +19,10 @@
                     <button class="xergor-head-menu-item-btn xergor-ripple" [cdkMenuTriggerFor]="languageOverlay">
                     </button>
                 </div>
-                <div class="xergor-head-menu-item">
-                    <button class="xergor-head-menu-item-btn xergor-ripple">
-                        <mat-icon class="xergor-search-icon">comment</mat-icon>
-                    </button>
-                </div>
             </div>
             <div class="xergor-head-user-avatar-container">
                 <div class="xergor-head-user-avatar">
-                    <img src="../../../../assets/icons/icon-192x192.png" alt="user" class="xergor-avatar-container"
+                    <img src="../../../../assets/icons/icon-72x72.png" alt="user" class="xergor-user-avatar-container"
                         [cdkMenuTriggerFor]="userOverlay">
                 </div>
             </div>
@@ -59,8 +54,10 @@
         <ul>
             <li *ngFor="let item of g_userMenuItems" cdkMenuItem>
                 <a>
+                    <div class="user-links">
                     <mat-icon class="xergor-icon">{{item.icon}}</mat-icon>
-                    <span>{{item.label}}</span>
+                    <span class="xergor-text">{{item.menuName}}</span>
+                </div>
                 </a>
             </li>
         </ul>

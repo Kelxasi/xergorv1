@@ -9,15 +9,15 @@ export const languageItems = [
 
 export const userMenuItems = [
     {
-        icon: 'circle',
+        icon: 'user',
         menuName: 'Profile'
     },
     {
-        icon: 'circle',
+        icon: 'settings',
         menuName: 'Settings'
     },
     {
-        icon: 'circle',
-        label: 'logout'
+        icon: 'logout',
+        menuName: 'logout'
     }
 ];
