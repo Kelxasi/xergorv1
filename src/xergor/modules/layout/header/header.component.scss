@@ -1,0 +1,268 @@
+.xergor-head {
+    width: calc(100% - 5rem);
+    margin-left: 5rem;
+    z-index: 1;
+    transition: all .5s ease;
+    background: #024554;
+    padding: 0;
+    position: fixed;
+    top: 0;
+ 
+    .xergor-head-content {
+        background-color: #024554;
+        border-radius: 0.625rem;
+        box-shadow: 0px 0px 10px 0 rgba(2, 69, 84, 0.1);
+        padding: 0.813rem 1.563rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .xergor-head-content-left {
+            .xergor-search-container {
+                position: relative;
+
+                .xergor-normal-search {
+                    .xergor-search {
+                        border: none;
+                        height: 2.375rem;
+                        padding-left: 2.5rem;
+                        padding-right: 1.25rem;
+                        background-color: #f3f3f9;
+                        box-shadow: none;
+                        border-radius: 1.875rem;
+                        outline: 0;
+                    }
+
+                    .xergor-search-icon {
+                        position: absolute;
+                        font-size: 1rem;
+                        line-height: 2.375rem;
+                        left: 0.813rem;
+                        top: 0;
+                        color: #74788d;
+                        outline: 0;
+                    }
+                }
+
+                .xergor-search-menu-btn {
+                    font-size: 18px;
+                    height: 42px;
+                    width: 42px;
+                    cursor: pointer;
+                    border: 1px solid transparent;
+                    border-radius: 50%;
+                    outline: 0;
+                }
+
+                .xergor-search-menu-btn:hover,
+                .xergor-search-menu-btn:focus {
+                    .xergor-search-icon {
+                        color: #699dfa;
+                    }
+                }
+            }
+        }
+
+        .xergor-head-content-right {
+            display: flex;
+            align-items: center;
+
+            .xergor-head-menu {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                margin-left: 1.25rem;
+
+                .xergor-head-menu-item {
+                    .xergor-head-menu-item-btn {
+                        font-size: 18px;
+                        height: 42px;
+                        width: 42px;
+                        cursor: pointer;
+                        border: 1px solid transparent;
+                        border-radius: 50%;
+                        margin-left: 5px;
+                        outline: 0;
+                        color: #495057;
+                    }
+
+                    .xergor-head-menu-item-btn:hover,
+                    .xergor-head-menu-item-btn:focus {
+                        .xergor-menu-icon {
+                            color: #699dfa;
+                        }
+                    }
+                }
+            }
+
+            .xergor-head-user-avatar-container {
+                margin-left: 20px;
+
+                .xergor-head-user-avatar {
+                    position: relative;
+
+                    .xergor-user-avatar {
+                        margin-bottom: -4px;
+                        width: 50px;
+                        border-radius: 10px;
+                        box-shadow: 0 0 15px rgb(35 35 35 / 15%);
+                        cursor: pointer;
+                    }
+
+                }
+
+                .xergor-circle-indicator {
+                    width: 8px;
+                    height: 8px;
+                    border-radius: 50%;
+                    position: absolute;
+                    top: -2px;
+                    right: -3px;
+                    background: #699dfa;
+
+                    &.pulse {
+                        animation: pulse-animation 1.2s infinite;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.xergor-head-trimmed {
+    width: calc(100% - 16.5625rem);
+    margin-left: 16.5625rem;
+}
+
+.xergor-head-md-screen {
+    width: calc(100% - 5rem);
+    margin-left: 5rem;
+}
+
+@keyframes xergor-pulse-animation {
+    0% {
+        box-shadow: 0 0 0 0 rgba(26, 104, 206, 0.6);
+    }
+
+    100% {
+        box-shadow: 0 0 0 13px rgba(17, 104, 126, 0);
+    }
+}
+
+@keyframes xergor-fall {
+    0% {
+        transform: scaleY(0);
+    }
+
+    100% {
+        transform: scaleY(1);
+    }
+}
+
+.xergor-overlay {
+    background: #fff;
+    margin-top: 10px;
+    box-shadow: 0 1rem 3rem rgb(0 0 0 /18%);
+    border-radius: 0.25rem;
+}
+
+.xergor-overlay-fall {
+    animation: fall 300ms ease-in-out forwards;
+    transform-origin: top-center;
+
+}
+
+.xergor-overlay-search {
+    padding: 1rem;
+    display: flex;
+
+    .xergor-search {
+        padding: 0.47rem 0.75rem;
+        font-size: 0.8125rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        outline: none;
+        border-radius: 0.25rem;
+    }
+
+    .xergor-search-btn {
+        color: #fff;
+        background-color: #699dfa;
+        cursor: pointer;
+        border: 1px solid transparent;
+        padding: 00.47rem 0.75rem;
+        border-radius: 0.25rem;
+    }
+}
+
+
+.xergor-overlay-language {
+    padding: 0.5rem 0;
+
+    ul {
+        list-style: none;
+        width: 10rem;
+
+        li {
+            padding: 0.35rem 1.5rem;
+            font-size: 14px;
+            font-weight: 400;
+            color: #495057;
+            cursor: pointer;
+
+            img {
+                margin-right: 0.6rem;
+                height: 12px;
+            }
+
+            li:hover {
+                background: #eff2f3;
+            }
+        }
+    }
+}
+
+.xergor-overlay-user {
+    ul {
+        padding: 0.5rem 0;
+        list-style: none;
+        width: 10rem;
+
+        li {
+            padding: 0.35rem 1.5rem;
+            font-size: 14px;
+            font-weight: 400;
+            color: #495057;
+            cursor: pointer;
+
+            .xergor-icon {
+                margin-right: 0.6rem;
+            }
+        }
+
+        li:hover {
+            background-color: #eff2f3;
+        }
+    }
+}
+
+.xergor-ripple {
+    background-position: center;
+    background-color: #fff;
+    transition: background 0.8s;
+}
+
+.xergor-ripple:hover,
+.xergor-ripple:focus {
+    background: #eff2f3 radial-gradient(circle, transparent 1%, #eff2f3 1%) center/15000%;
+}
+
+.xergor-ripple:active {
+    background-color: #bec2c4;
+    background-size: 100%;
+    transition: background 0s;
+}

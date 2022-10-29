@@ -1,0 +1,68 @@
+<div class="xergor-head" [ngClass]="getHeaderClass()">
+    <div class="xergor-head-content">
+        <div class="xergor-head-content-left">
+            <div class="xergor-search-container">
+                <div *ngIf="!g_canShowSearchAsOverlay" class="xergor-normal-search">
+                    <input type="search" class="xergor-search" placeholder="Search...">
+                    <mat-icon class="xergor-search-icon">search</mat-icon>
+                </div>
+                <div *ngIf="g_canShowSearchAsOverlay">
+                    <button [cdkMenuTriggerFor]="searchOverlay" class="xergor-search-menu-btn xergor-ripple">
+                        <mat-icon class="xergor-search-icon">search</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="xergor-head-content-right">
+            <div class="xergor-head-menu">
+                <div class="xergor-head-menu-item">
+                    <button class="xergor-head-menu-item-btn xergor-ripple" [cdkMenuTriggerFor]="languageOverlay">
+                    </button>
+                </div>
+                <div class="xergor-head-menu-item">
+                    <button class="xergor-head-menu-item-btn xergor-ripple">
+                        <mat-icon class="xergor-search-icon">comment</mat-icon>
+                    </button>
+                </div>
+            </div>
+            <div class="xergor-head-user-avatar-container">
+                <div class="xergor-head-user-avatar">
+                    <img src="../../../../assets/icons/icon-192x192.png" alt="user" class="xergor-avatar-container"
+                        [cdkMenuTriggerFor]="userOverlay">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #searchOverlay>
+    <div class="xergor-overlay xergor-overlay-search xergor-overlay-fall" cdkMenu>
+        <input type="search" class="xergor-search" name="" id="" placeholder="Search ...">
+        <button class="xergor-search-btn">
+            <mat-icon class="xergor-search-icon">search</mat-icon>
+        </button>
+    </div>
+</ng-template>
+
+<ng-template #languageOverlay>
+    <div class="xergor-overlay xergor-overlay-language xergor-overlay-fall" cdkMenu>
+        <ul>
+            <li *ngFor="let lang of g_languageItems" cdkMenuItem>
+                <span>{{lang.language}}</span>
+            </li>
+        </ul>
+    </div>
+</ng-template>
+
+<ng-template #userOverlay>
+    <div class="xergor-overlay xergor-overlay-user xergor-overlay-fall" cdkMenu>
+        <ul>
+            <li *ngFor="let item of g_userMenuItems" cdkMenuItem>
+                <a>
+                    <mat-icon class="xergor-icon">{{item.icon}}</mat-icon>
+                    <span>{{item.label}}</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</ng-template>

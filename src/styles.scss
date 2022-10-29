@@ -1,1 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
+ 
+@use './xergor-theme';
+@import '/node_modules/material-icons-font/sass/variables';
+@import '/node_modules/material-icons-font/sass/variables';
+@import '/node_modules/material-icons-font/sass/mixins';
+$MaterialIcons_FontPath: "~material-icons-font/fonts";
+@import '/node_modules/material-icons-font/sass/main';
+@import '/node_modules/material-icons-font/sass/Regular';
+@import "@angular/cdk/overlay-prebuilt.css";
+
+ 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  font-family: 'Roboto', sans-serif;
+  background: #f4f7fa;
+}
+

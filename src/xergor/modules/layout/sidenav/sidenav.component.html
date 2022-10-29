@@ -1,0 +1,51 @@
+<div class="sidenav" [ngClass]="g_collapsed ? 'sidenav-collapsed' : '' ">
+    <div class="logox-container">
+        <button class="logox" >X</button>
+        <div class="logox-text" *ngIf="g_collapsed">XERGOR</div>
+    </div>
+    <div class="collapse-container " (click)="onToggleCollapse()">
+        <mat-icon>more_vert</mat-icon>
+    </div>
+    <div class="sidenav-menu-scroll sidenav-menu-scroll-delayed">
+        <ul class="sidenav-nav">
+            <li class="sidenav-nav-item" *ngFor="let l_item of g_itemData">
+                <a class="sidenav-nav-item-link" (click)="onHandleClick(l_item)"
+                    *ngIf="l_item" [ngClass]="getActiveLinkClass(l_item)">
+                    <mat-icon class="sidenav-nav-item-link-icon">{{l_item.icon}}</mat-icon>
+                    <span class="sidenav-nav-item-link-text" *ngIf="g_collapsed">
+                        {{l_item.menuName}}
+                    </span>
+                    <mat-icon class="sidenav-nav-item-link-collapse-icon" *ngIf="l_item">
+                        {{getLinkExpandedIcon(l_item)}}
+                    </mat-icon>
+                </a>
+ 
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div [ngClass]="g_collapsed ? 'sidenav-left' : '' " class="template-container" *ngIf="g_template_open_control">
+    <div class="container-head">
+        <div class="container-head-spacer" *ngIf="g_selectedMenuData">
+            {{g_selectedMenuData.menuName}}
+        </div>
+    </div>
+    <div class="container-body">
+        <div class="list-item" *ngIf="g_selectedMenuData.menuName">
+            <div class="list-item-head">
+                {{g_selectedMenuData.menuName}}
+            </div>
+            <ul #filteredListElement *ngIf="g_selectedMenuData && g_selectedMenuData.subItems && g_selectedMenuData.subItems.length > 0" >
+                <li  *ngFor="let item of g_selectedMenuData.subItems;" class="item">
+                    <!--string logic-->
+                    <a>
+                        {{item.menuName}}
+                        <ng-container *ngTemplateOutlet="itemTemplate;  context: { $implicit: item.menuName}">
+                        </ng-container>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
