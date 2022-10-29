@@ -8,6 +8,7 @@ import { GlobalMaterialModule } from './shared/components/angular-material/mater
 import { HeaderComponent } from './modules/layout/header/header.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { CommonModule } from '@angular/common';
 
 const prefersReducedMotion = typeof matchMedia === 'function' ? matchMedia('(prefers-reduced-motion)').matches : false;
 
@@ -18,6 +19,7 @@ const prefersReducedMotion = typeof matchMedia === 'function' ? matchMedia('(pre
     HeaderComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     BrowserAnimationsModule.withConfig({disableAnimations: prefersReducedMotion}),
     XergorRoutingModule,
