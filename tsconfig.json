@@ -3,6 +3,8 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
+    "resolveJsonModule": true, //json dosyalarının okunması için eklendi.
+    "esModuleInterop": true,  //jsn dosyalarının okunması için eklendi.
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": true,

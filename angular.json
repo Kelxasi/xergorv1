@@ -29,9 +29,19 @@
               "src/manifest.webmanifest"
             ],
             "styles": [
-              "src/styles.scss",
-              "./node_modules/material-icons-font/material-icons-font.css"
+              {
+               "input":  "src/styles.scss"
+              },
+              {
+              "input": "./node_modules/material-icons-font/material-icons-font.css"
+              },
+              {
+                "input": "src/styles/highlight/light.scss"
+              }
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": ["node_modules", "src", "src/styles"]
+            },
             "scripts": [],
             "serviceWorker": true,
             "ngswConfigPath": "ngsw-config.json"
