@@ -1,13 +1,17 @@
- 
+@use '@angular/material' as mat;
 @use './xergor-theme';
-@import '/node_modules/material-icons-font/sass/variables';
-@import '/node_modules/material-icons-font/sass/variables';
-@import '/node_modules/material-icons-font/sass/mixins';
-$MaterialIcons_FontPath: "~material-icons-font/fonts";
-@import '/node_modules/material-icons-font/sass/main';
-@import '/node_modules/material-icons-font/sass/Regular';
-@import "@angular/cdk/overlay-prebuilt.css";
 
+
+@import '~@angular/cdk/overlay-prebuilt.css';
+
+
+@include mat.core();
+ 
+$_primary: mat.define-palette(mat.$indigo-palette);
+$_accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$_theme: mat.define-light-theme($_primary, $_accent);
+@include mat.all-component-themes($_theme);
+@include xergor-theme.theme($_theme);
  
 * {
   margin: 0;
@@ -21,3 +25,35 @@ body {
   background: #f4f7fa;
 }
 
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: .5rem;
+  background-color: #fff;
+  margin: 1.25rem 0 1.25rem 0;
+  box-shadow: 0 .25rem .5rem #e6edef;
+  color: #495057;
+
+  .card-head {
+      align-content: center;
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      background: #5f7a88;
+      color: #fff;
+      border-radius: 0.5rem 0.5rem 0 0;
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid #edf1f7;
+      font-size: 1rem;
+      font-weight: 600;
+  }
+
+  .card-body {
+      padding: 1.5rem 1.5rem;
+  }
+
+  .card-head-spacer {
+      flex: 1 1 auto;
+  }
+}

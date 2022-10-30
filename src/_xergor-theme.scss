@@ -1,6 +1,21 @@
+ 
 @use 'sass:map';
+@use '@angular/material' as mat;
 
+ 
+@use './xergor/modules/pages/settings/district-list/district/district_detail_theme';
+ 
+
+// Styles for the docs app that are based on the current theme.
 @mixin theme($theme) {
-    $primary: map.get($theme,primary);
-    $background: map.get($theme,accent);
+  $primary: map.get($theme, primary);
+  $accent: map.get($theme, accent);
+  $warn: map.get($theme, warn);
+  $background: map.get($theme, background);
+  $foreground: map.get($theme, foreground);
+ 
+
+  @include district_detail_theme.theme($theme);
+ 
+  
 }
