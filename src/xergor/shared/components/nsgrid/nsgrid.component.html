@@ -1,0 +1,135 @@
+<div class="container mat-elevation-z8">
+  <div class="table-container">
+    <!--[hidden]="dataSource.data.length === 0 || hidden"-->
+    <table mat-table [dataSource]="dataSource" cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="tableDrop($event)" >
+      <ng-container *ngFor="let column of columnMetaData" [matColumnDef]="column.name">
+        <th mat-header-cell *matHeaderCellDef [style.width.px]="column?.width" cdkDrag cdkDragLockAxis="x" cdkDragBoundary="mat-header-row">
+          {{column.title }}
+        </th>
+        <td mat-cell *matCellDef="let element; let rowIndex = index">
+          <ng-container *ngIf="!column?.isEditable || selectedRowIndex !== rowIndex; else controls">
+            {{element[column.name]}}
+          </ng-container>
+          <ng-template #controls>
+            <ng-container [ngSwitch]="column?.type" [formGroup]="editableColFormGrp">
+              <!--text Control-->
+              <mat-form-field appearance="outline" *ngSwitchCase="columnType.TEXT" >
+                <input matInput formControlName="{{column.name}}" required>
+              </mat-form-field>
+              <!--number Control-->
+              <mat-form-field appearance="outline" *ngSwitchCase="columnType.NUMBER" >
+                <input matInput type="number" formControlName="{{column.name}}" (keypress)="omitSpecialChar($event);"
+                  required>
+              </mat-form-field>
+              <!--date Control-->
+              <mat-form-field appearance="outline" *ngSwitchCase="columnType.DATE" >
+                <input matInput [matDatepicker]="picker" formControlName="{{column.name}}" [min]="column?.date?.min"
+                  [max]="column?.date?.max" readonly>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+ 
+              <!--autocomplete control-->
+              <mat-form-field appearance="outline" *ngSwitchCase="columnType.AUTOCOMPLETE" >
+                <input matInput formControlName="{{column.name}}" [matAutocomplete]="auto">
+                <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="autoCompleteDisplayFn">
+                  <mat-option *ngFor="let option of autoCompleteFilterOptions[column.name]"
+                    [matTooltip]="option?.description" [value]="option.id" class="normal-line-height">
+                    <h2 class="no-margin">{{option.id}}</h2>
+                    <p class="no-margin" [style.font-weight]="500">{{option?.description}}</p>
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+              <!--dropdown control-->
+              <mat-form-field appearance="outline" *ngSwitchCase="columnType.DROPDOWN" >
+                <mat-select formControlName="{{column.name}}">
+                  <mat-select-trigger>
+                    {{editableColFormGrp.controls[column.name].value}}
+                  </mat-select-trigger>
+                  <mat-option *ngFor="let option of column!.dropDown" [matTooltip]="option?.description!"
+                    [value]="option.id" class="normal-line-height">
+                    <h2 class="no-margin">{{option.id}}</h2>
+                    <p class="no-margin" [style.font-weight]="500">{{option?.description}}</p>
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <!--checkbox control-->
+              <mat-checkbox formControlName="{{column.name}}" color="primary" *ngSwitchCase="columnType.CHECKBOX"
+                [ngClass]="{'not-active':editableColFormGrp.hasError('required',column.name)}">
+              </mat-checkbox>
+              <!--slide control-->
+              <mat-slide-toggle formControlName="{{column.name}}" color="primary" *ngSwitchCase="columnType.SLIDE"
+                [ngClass]="{'not-active':editableColFormGrp.hasError('required',column.name)}">
+              </mat-slide-toggle>
+              <!--textarea control-->
+              <mat-form-field appearance="outline" *ngSwitchCase="columnType.TEXTAREA" 
+                [style.height.px]="!column?.enableResize ? 75 : ''">
+                <textarea matInput formControlName="{{column.name}}"
+                  [ngClass]="{'no-resize':!column?.enableResize}"></textarea>
+              </mat-form-field>
+              <!--default control-->
+              <mat-form-field appearance="outline" *ngSwitchDefault >
+                <input matInput formControlName="{{column.name}}" required>
+              </mat-form-field>
+            </ng-container>
+          </ng-template>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="Action" style="display: flex; flex-direction: row;" stickyEnd>
+        <th mat-header-cell *matHeaderCellDef>
+          <button mat-icon-button matTooltip="Add New Row" (click)="addInlineRow()">
+            <mat-icon>add_box</mat-icon>
+          </button>
+        </th>
+        <td mat-cell *matCellDef="let element; let rowIndex = index">
+          <!--Before Action-->
+          <!--
+          <button mat-icon-button *ngFor="let action of beforeAction" (click)="onAction.emit(element)">
+            <mat-icon [style.color]="action?.color ? action.color : '#808080'" class="icon-medium"
+              [matTooltip]="action.toolTip"> {{action.iconName}} </mat-icon>
+          </button>
+        -->
+          <button mat-icon-button *ngIf="isEdit && selectedRowIndex !== rowIndex; else editRow"
+            (click)="rowOpen(rowIndex, element)">
+            <mat-icon matTooltip="Edit">edit</mat-icon>
+          </button>
+          <!--[disabled]="!this.editableColFormGrp.valid" [ngClass]="{disable: !this.editableColFormGrp.valid}"-->
+          <ng-template #editRow>
+            <span>
+              <button mat-icon-button (click)="inlineEditAction(element);">
+                <mat-icon [ngClass]="{confirm:this.editableColFormGrp.valid}" matTooltip="Confirm">check</mat-icon>
+              </button>
+            </span>
+            <span>
+              <button mat-icon-button (click)="inlineEditAction(element,hasCancel);">
+                <mat-icon style="color:#808080;" class="icon-medium" matTooltip="Cancel">close</mat-icon>
+              </button>
+            </span>
+          </ng-template>
+          <!--InBetween Action-->
+          <!--
+          <button mat-icon-button *ngFor="let action of inbetweenAction" (click)="onAction.emit(element)">
+            <mat-icon [style.color]="action?.color ? action.color : '#808080'" class="icon-medium"
+              [matTooltip]="action.toolTip"> {{action.iconName}} </mat-icon>
+          </button>
+          -->
+
+          <button mat-icon-button *ngIf="isDelete && selectedRowIndex !== rowIndex"
+            (click)="inlineDeleteAction(element,rowIndex);">
+            <mat-icon style="color:#ff0000;" class="icon-medium" matTooltip="Delete">delete</mat-icon>
+          </button>
+
+          <!--After Action-->
+          <!--
+          <button mat-icon-button *ngFor="let action of afterAction" (click)="onAction.emit(element)">
+            <mat-icon [style.color]="action?.color ? action.color : '#808080'" class="icon-medium"
+              [matTooltip]="action.toolTip"> {{action.iconName}} </mat-icon>
+          </button>
+        -->
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns sticky: true" ></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" ></tr>
+    </table>
+  </div>
+</div>
