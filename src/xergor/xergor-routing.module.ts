@@ -3,9 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
  
 const routes: Routes = [
     {
-        path: "**",
-        redirectTo: ""
-    }
+     path: 'settings/district',
+     loadChildren: () => import('./modules/pages/settings/district-list/district.module').then(m => m.DistrictModule)
+    },
+    {
+     path: "**",
+     redirectTo: ""
+   }
 ];
 
 @NgModule({
