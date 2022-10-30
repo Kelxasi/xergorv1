@@ -1,0 +1,47 @@
+<div focusOnNavigation class="card" *ngIf="district">
+    <div class="card-head"> 
+        <div class="card-head-spacer" >İlçe Listesi</div>
+        <button mat-icon-button  [cdkMenuTriggerFor]="settingsOverlay">
+            <mat-icon>settings</mat-icon>
+        </button>
+    </div>
+    <div class="card-body">
+      <div class="district-list">
+        <a *ngFor="let item of district?.data" class="district-list-item"  (click)="routeLink(item.id)">
+          <div class="district-list-card">
+            <div class="district-list-card-title">{{item.districtCode}}</div>
+            <div class="district-list-card-summary">
+              <table class="stats">
+                <tbody><tr>
+                  <th>Adı :</th>
+                  <td>{{item.districtName}}</td>
+                </tr>
+              </tbody></table>
+            </div>
+            <div class="district-card-divider"></div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  
+  <div *ngIf="!district || !district?.data || (district?.data && district?.data?.length == 0)">
+    <span>Liste Boş</span>
+  </div>
+  
+  <ng-template  #settingsOverlay>
+    <div class="overlay overlay-settings overlay-fall" cdkMenu>
+        <ul>
+            <li cdkMenuItem>
+                <a>
+                    <span>Tablo Gösterimi</span>
+                </a>
+            </li>
+            <li cdkMenuItem>
+              <a [routerLink]="'district/0'">
+                  <span>Yeni Kayıt</span>
+              </a>
+          </li>
+        </ul>
+    </div>
+  </ng-template>

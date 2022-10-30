@@ -1,0 +1,115 @@
+:host {
+    font-size: 14px;
+    line-height: 1.5;
+   
+  }
+   
+  .district-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    padding: 10px;
+  
+  }
+  
+  .district-list-item {
+    display: inline-block;
+    vertical-align: top;
+    width: 280px;
+    background-color: #fff;
+    margin: 1.25rem;
+    box-shadow: 0 .25rem .5rem #e6edef;
+    color: #495057;
+  
+    .district-list-card-title {
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      padding-left: 0.5rem;
+      font-size: 20px;
+      font-weight: 300;
+      background: #5f7a88;
+      color: #fff;
+      border-radius: 0.5rem 0.5rem 0 0;
+      &:hover{
+        background-color: #feb236;
+        color: #495057;
+      }
+    }
+  
+    &, &:active, &:hover, &:focus {
+      text-decoration: none;
+    }
+  
+  
+  }
+  .district-list-card{
+    overflow: hidden;
+  }
+  
+  .district-list-card-summary {
+    padding: 0 15px 15px 15px;
+    min-height: 2.4em;
+    font-size: 15px;
+    
+    &.stats {
+      justify-content: flex-start;
+      th {
+        text-align: right;
+      }
+      width: 100%;
+      
+      th, td {
+        width: 50%;
+        padding: 0.25em 0.5em 0;
+      }
+      
+    }
+  }
+  
+  
+  .district-card-divider {
+    width: 40%;
+    height: 7px;
+    margin: 15px auto;
+  }
+  
+  
+  .overlay {
+    background: #fff;
+    margin-top: 10px;
+    box-shadow: 0 1rem 3rem rgb(0 0 0 /18%);
+    border-radius: 0.25rem;
+  }
+  
+  .overlay-fall {
+    animation: fall 300ms ease-in-out forwards;
+    transform-origin: top-center;
+  
+  }
+  
+  
+  .overlay-settings {
+    ul {
+        padding: 0.5rem 0;
+        list-style: none;
+        width: 10rem;
+  
+        li {
+            padding: 0.35rem 1.5rem;
+            font-size: 14px;
+            font-weight: 400;
+            color: #495057;
+            cursor: pointer;
+  
+            .icon {
+                margin-right: 0.6rem;
+            }
+        }
+  
+        li:hover {
+            background-color: #eff2f3;
+        }
+    }
+  }

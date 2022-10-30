@@ -1,0 +1,62 @@
+<div class="vet-container-viewer-wrapper">
+    <form [formGroup]="f_districtForm" (ngSubmit)="onSubmit()">
+        <div class="vet-container-viewer-title">
+            <div class="vet-container-viewer-title-spacer">İlçe Kartı</div>
+            <button mat-icon-button type="submit" [disabled]="!f_districtForm.valid || !f_districtForm.dirty" [attr.aria-label]="" matTooltip="Kaydet"
+                (ngSubmit)="onSubmit()">
+                <mat-icon [ngClass]="getPulseClass()">done</mat-icon>
+            </button>
+            <button mat-icon-button type="button" matTooltip="Sil" [disabled]="f_isAddMode" aria-label="Sil" (click)="delete(district!.id)">
+                <mat-icon>delete</mat-icon>
+            </button>
+            <button mat-icon-button type="button" aria-label="Yenile" [disabled]="f_isAddMode">
+                <mat-icon>refresh</mat-icon>
+            </button>
+        </div>
+        <div class="vet-container-source">
+            <mat-tab-group disableRipple="true">
+                <mat-tab label="Genel">
+                    <mat-card>
+                        <mat-card-content>
+                            <section class="form-field-contaier ">
+                                <mat-checkbox [ngClass]="{ 'is-invalid': submitted }" color="primary"  formControlName="inUse"
+                                    labelPosition="after"> Kullanımda </mat-checkbox>
+                            </section>
+                            <section class="form-field-contaier ">
+                                <mat-form-field class="matform" appearance="outline" hideRequiredMarker>
+                                    <mat-label>İlçe Kodu</mat-label>
+                                    <input matInput class="matform" type="text" maxlength="100"
+                                        placeholder="İlçe Kodu giriniz..." formControlName="districtCode"
+                                        [ngClass]="{ 'is-invalid': submitted && district!.districtCode}">
+                                    <mat-error *ngIf="submitted && DistrictForm['districtCode'].errors">
+                                        İlçe kodu zorunludur.
+                                    </mat-error>
+                                </mat-form-field>
+                            </section>
+                            <section class="form-field-contaier ">
+                                <mat-form-field class="matform" appearance="outline" hideRequiredMarker>
+                                    <mat-label>İlçe Adı</mat-label>
+                                    <input matInput #message maxlength="300" placeholder="İlçe adı giriniz..."
+                                        formControlName="districtName"
+                                        [ngClass]="{ 'is-invalid': submitted && district!.districtName}">
+                                    <mat-error *ngIf="submitted && DistrictForm['districtName'].errors">
+                                        İlçe adı zorunludur.
+                                    </mat-error>
+                                </mat-form-field>
+                            </section>
+                            <section class="form-field-contaier ">
+                             <autocomplete-list  [dataSource]="f_cities" [column]="column" [listName]="'Şehir Listesi'" [textValue]="DistrictForm['cityName'].value" 
+                             [textFieldKeyword]="g_keyword" (selectedRow)="selectEvent($event)" (inputCleared)="clearEvent($event)">
+                             </autocomplete-list>
+                             <mat-error *ngIf="submitted && DistrictForm['districtName'].value === '' ">
+                                Şehir zorunludur.
+                            </mat-error>
+                             </section>
+                        </mat-card-content>
+                    </mat-card>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+    </form>
+</div>
+ 
