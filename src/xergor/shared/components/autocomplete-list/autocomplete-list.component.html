@@ -1,0 +1,11 @@
+<div class="autocomplete-list-container">
+  <div class="input-container">
+    <div class="input-search" (click)="handleFocus($event)">
+      <mat-icon>search</mat-icon>
+    </div>
+    <input #serchedListBox type="text" [(ngModel)]=textValue (click)="handleFocus($event)" [disabled]="disabled" [readonly]="isReadonly">
+    <div class="input-closing" *ngIf="textValue" (click)="remove($event)">
+      <mat-icon>close</mat-icon>
+    </div>
+  </div>
+</div>

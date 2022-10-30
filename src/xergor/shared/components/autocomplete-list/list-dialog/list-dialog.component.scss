@@ -1,0 +1,118 @@
+ 
+
+.close-button{
+  float: right;
+  top:-24px;
+  right:-24px;
+}
+
+.close-icon {
+  transition: 1s ease-in-out;
+}
+
+.close-icon:hover {
+  transform: rotate(180deg);
+}
+
+::ng-deep .icon-outside .close-button{
+  float: right;
+  top:-52px;
+  right:-52px;
+}
+
+::ng-deep .icon-outside .mat-dialog-container {
+  overflow: unset
+}
+ 
+.mat-dialog-actions {
+  float: right;
+}
+
+.mat-stroked-button {
+  width: 100px;
+}
+
+.mat-dialog-content {
+  display: flex;
+  flex-direction: column;
+  resize: both;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+}
+
+.table-loading-shade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 56px;
+  right: 0;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mat-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-container {
+  overflow: auto;
+}
+
+.mat-cell,
+.mat-header-cell {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.detail-row-collapsed {
+  visibility: collapse;
+}
+
+.detail-row-expanded {
+  visibility: visible;
+}
+
+.not-adding {
+  visibility: collapse;
+}
+
+.adding {
+  visibility: visible;
+}
+
+.column-filtered {
+  background-color: DimGray;
+}
+
+.column-not-filtered {
+  background-color: rgb(170, 170, 170);
+}
+
+.mat-header-cell {
+  background-color: rgb(170, 170, 170);
+  color: white;
+}
+
+.mat-column-select {
+  overflow: initial;
+}
+
+tr:nth-child(2n+2) {
+  background-color: #f2f2f2
+}
+
+.mat-row:hover {
+  background-color: #ddd;
+}
