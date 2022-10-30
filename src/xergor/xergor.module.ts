@@ -9,6 +9,8 @@ import { HeaderComponent } from './modules/layout/header/header.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { CommonModule } from '@angular/common';
+import { BodyComponent } from './modules/layout/body/body.component';
+import { XergorAlertModule } from './shared/components/xergor-alert/xergor-alert.module';
 
 const prefersReducedMotion = typeof matchMedia === 'function' ? matchMedia('(prefers-reduced-motion)').matches : false;
 
@@ -16,7 +18,8 @@ const prefersReducedMotion = typeof matchMedia === 'function' ? matchMedia('(pre
   declarations: [
     XergorComponent,
     SidenavComponent,
-    HeaderComponent
+    HeaderComponent,
+    BodyComponent
   ],
   imports: [
     CommonModule,
@@ -24,6 +27,7 @@ const prefersReducedMotion = typeof matchMedia === 'function' ? matchMedia('(pre
     BrowserAnimationsModule.withConfig({disableAnimations: prefersReducedMotion}),
     XergorRoutingModule,
     GlobalMaterialModule,
+    XergorAlertModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the application is stable
