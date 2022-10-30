@@ -1,76 +1,68 @@
 export const menuItemData = [
   {
-    routeLink: 'dashboard',
-    icon: 'home',
+    menuName: 'Inventory Management',
+    icon: 'dashboard',
     opened: false,
-    menuName: 'Dashboard'
-
+    menuCategory : [
+       {
+          categoryTitle: 'Inventory',
+          categoryDetail: [
+            {
+              name: 'List',
+              routeLink: 'inventory/list'
+            },
+            {
+              name: 'New',
+              routeLink: 'inventory/new'
+            }
+          ]
+       }
+    ]
   },
   {
-    routeLink: 'inventory',
+    menuName: 'Settings Menu',
     icon: 'settings',
     opened: false,
-    menuName: 'Inventory'
-  },
-  {
-    routeLink: 'inventory',
-    icon: 'settings',
-    opened: false,
-    menuName: 'Inventory'
-  },
-  {
-    routeLink: 'inventory',
-    icon: 'settings',
-    opened: false,
-    menuName: 'Inventory'
-  },
-  {
-    routeLink: 'inventory',
-    icon: 'settings',
-    opened: false,
-    menuName: 'Inventory'
-  },
-  {
-    routeLink: 'inventory',
-    icon: 'settings',
-    opened: false,
-    menuName: 'Inventory'
-  },
-  {
-    routeLink: 'dashboard8',
-    icon: 'settings',
-    opened: false,
-    menuName: 'settings',
-
-    subItems: [
+    menuCategory : [
       {
-        routeLink: 'account/address/district',
-        menuName: 'District Lists',
-        opened: false,
-        subItems: [
+        categoryTitle: 'Country',
+        categoryDetail: [
           {
-            routeLink: 'account/address/district',
-            menuName: 'District Lists',
-            opened: false,
+            name: 'List',
+            routeLink: 'settings/country/list'
           },
           {
-            routeLink: 'dashboard11',
-            menuName: 'District Lists',
-            opened: false,
+            name: 'New',
+            routeLink: 'settings/country/new'
           }
         ]
-      },
-      {
-        routeLink: 'dashboard12',
-        menuName: 'District Lists',
-        opened: false,
-      }
-      ,
-      {
-        routeLink: 'dashboard134',
-        menuName: 'District Lists',
-        opened: false,
-      }
+     },
+     {
+      categoryTitle: 'City',
+      categoryDetail: [
+        {
+          name: 'List',
+          routeLink: 'settings/city/list'
+        },
+        {
+          name: 'New',
+          routeLink: 'settings/city/new'
+        }
+      ]
+   },
+       {
+          categoryTitle: 'District',
+          categoryDetail: [
+            {
+              name: 'List',
+              routeLink: 'settings/district/list'
+            },
+            {
+              name: 'New',
+              routeLink: 'settings/district/detail/0'
+            }
+          ]
+       }
     ]
-  }
+  },
 ];

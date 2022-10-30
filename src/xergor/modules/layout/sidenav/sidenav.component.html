@@ -27,21 +27,21 @@
 
 <div [ngClass]="g_collapsed ? 'sidenav-left' : '' " class="template-container" *ngIf="g_template_open_control">
     <div class="container-head">
-        <div class="container-head-spacer" *ngIf="g_selectedMenuData">
+        <div class="container-head-spacer" *ngIf="g_selectedMenuData ">
             {{g_selectedMenuData.menuName}}
         </div>
     </div>
     <div class="container-body">
-        <div class="list-item" *ngIf="g_selectedMenuData.menuName">
+        <div class="list-item" *ngFor="let category of g_selectedMenuData.menuCategory" >
             <div class="list-item-head">
-                {{g_selectedMenuData.menuName}}
+                {{category.categoryTitle}}
             </div>
-            <ul #filteredListElement *ngIf="g_selectedMenuData && g_selectedMenuData.subItems && g_selectedMenuData.subItems.length > 0" >
-                <li  *ngFor="let item of g_selectedMenuData.subItems;" class="item">
+            <ul #filteredListElement *ngIf="category && category.categoryDetail && category.categoryDetail.length > 0" >
+                <li  *ngFor="let item of category.categoryDetail;" class="item">
                     <!--string logic-->
-                    <a>
-                        {{item.menuName}}
-                        <ng-container *ngTemplateOutlet="itemTemplate;  context: { $implicit: item.menuName}">
+                    <a  (click)="onRouteHandleClick(g_selectedMenuData,item.routeLink)" >
+                        {{item.name}}
+                        <ng-container *ngTemplateOutlet="itemTemplate;  context: { $implicit: item.routeLink}">
                         </ng-container>
                     </a>
                 </li>

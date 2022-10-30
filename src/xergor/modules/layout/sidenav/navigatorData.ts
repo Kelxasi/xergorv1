@@ -1,10 +1,19 @@
-export interface INavigatorData {
-    routeLink: string;
-    icon?: string;
+export interface IMenu {
     menuName: string;
+    icon?: string;
     opened?: boolean;
-    subItems?: INavigatorData[];
+    menuCategory?: IMenuCategory[];
 
+}
+
+interface IMenuCategory{
+    categoryTitle: string;
+    categoryDetail: ICategoryDetail[];
+}
+
+interface ICategoryDetail{
+    name: string;
+    routeLink: string;
 }
 
 

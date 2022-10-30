@@ -31,13 +31,6 @@ export class BodyComponent implements OnInit {
 
   }
 
-  onClickBtn(){
  
-    this.a.info("erroreee",{autoClose: true});
-    this.a.error("error");
-    this.a.success("addad");
-    this.a.warn("a");
-  }
-
 
 }

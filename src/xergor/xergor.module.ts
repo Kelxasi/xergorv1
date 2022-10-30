@@ -10,7 +10,10 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { CommonModule } from '@angular/common';
 import { BodyComponent } from './modules/layout/body/body.component';
-import { XergorAlertModule } from './shared/components/xergor-alert/xergor-alert.module';
+import { HttpClientModule } from '@angular/common/http';
+import { SharedModule } from './shared/shared.module';
+import { DistrictListComponent } from './modules/pages/settings/district-list/district-list.component';
+import { DistrictModule } from './modules/pages/settings/district-list/district.module';
 
 const prefersReducedMotion = typeof matchMedia === 'function' ? matchMedia('(prefers-reduced-motion)').matches : false;
 
@@ -25,15 +28,15 @@ const prefersReducedMotion = typeof matchMedia === 'function' ? matchMedia('(pre
     CommonModule,
     BrowserModule,
     BrowserAnimationsModule.withConfig({disableAnimations: prefersReducedMotion}),
-    XergorRoutingModule,
-    GlobalMaterialModule,
-    XergorAlertModule,
+    HttpClientModule,
+    SharedModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the application is stable
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
-    })
+    }),
+    XergorRoutingModule
   ],
   providers: [],
   bootstrap: [XergorComponent],

@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { menuItemData } from './menuData';
 import { fadeInOut, subMenuRotate } from './menuTrigger';
 
-import { INavigatorData, ISidenavToggle } from './navigatorData';
+import { IMenu, ISidenavToggle } from './navigatorData';
 
 @Component({
   selector: 'xergor-sidenav',
@@ -19,7 +19,7 @@ export class SidenavComponent implements OnInit, OnDestroy {
   g_collapsed: boolean = false; //Menü açılıp kapanması 
   g_screen_width: number = 0; //Ekran genişliği
   g_template_open_control: boolean = false; //Menü kontrolü
-  g_selectedMenuData: INavigatorData | any ;
+  g_selectedMenuData: IMenu | any ;
 
   //Menü template
   @Input() itemTemplate !: TemplateRef<any>;
@@ -57,7 +57,7 @@ export class SidenavComponent implements OnInit, OnDestroy {
  * Menü itemının açılıp kapanması davranışı
  * @param l_menuItem 
  */
-  onHandleClick(l_menuItem: INavigatorData): void {
+  onHandleClick(l_menuItem: IMenu): void {
     for (let modelItem of this.g_itemData) {
       if (modelItem !== l_menuItem) {
         modelItem.opened = false;
@@ -93,14 +93,14 @@ export class SidenavComponent implements OnInit, OnDestroy {
    * @param l_menu_item 
    * @returns 
    */
-  getActiveLinkClass(l_menuItem: INavigatorData): string {
+  getActiveLinkClass(l_menuItem: IMenu): string {
     if (l_menuItem.opened) {
       return 'router-link-active';
     }
     return ''
   }
 
-  getLinkExpandedIcon(l_menuItem: INavigatorData): string {
+  getLinkExpandedIcon(l_menuItem: IMenu): string {
     if (l_menuItem.opened) {
       return 'keyboard_arrow_right';
     }
@@ -108,4 +108,19 @@ export class SidenavComponent implements OnInit, OnDestroy {
     return ''
   }
 
+  onRouteHandleClick(l_menuItem: IMenu,l_url: string): void {
+    for (let modelItem of this.g_itemData) {
+      if (modelItem !== l_menuItem) {
+        modelItem.opened = false;
+        this.g_template_open_control = false;
+      }
+      else if(modelItem === l_menuItem){
+        this.g_selectedMenuData = l_menuItem;
+      }
+    }
+ 
+    l_menuItem.opened = !l_menuItem.opened;
+    this.g_template_open_control = l_menuItem.opened;
+    this.router.navigate([l_url]);
+  }
 }
