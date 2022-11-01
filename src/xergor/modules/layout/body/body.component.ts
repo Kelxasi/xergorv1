@@ -1,5 +1,6 @@
 import { Component, ErrorHandler, Input, OnInit } from '@angular/core';
 import { XHergorAlertService } from 'src/xergor/shared/components/xergor-alert/alert.service';
+import { LoadService } from 'src/xergor/shared/services/loader.service';
 
 @Component({
   selector: 'xergor-body',
@@ -12,7 +13,7 @@ export class BodyComponent implements OnInit {
   @Input() g_screenWidth = 0;
 
 
-  constructor(private a: XHergorAlertService) { }
+  constructor(private a: XHergorAlertService , public loaderService: LoadService) { }
 
   ngOnInit(): void {
 

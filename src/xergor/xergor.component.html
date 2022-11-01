@@ -1,5 +1,5 @@
-<xergor-sidenav (onToggleSidenavItem)="onToggleSideNav($event)" ></xergor-sidenav>
-<xergor-header [g_collapsed]="isSideNavCollapsed" [g_screenWidth]="screenWidth"></xergor-header>
-<xergor-body [g_collapsed]="isSideNavCollapsed" [g_screenWidth]="screenWidth"></xergor-body>
-
+<xergor-sidenav (onToggleSidenavItem)="onToggleSideNav($event)" *ngIf="isLogging" ></xergor-sidenav>
+<xergor-header [g_collapsed]="isSideNavCollapsed" [g_screenWidth]="screenWidth" *ngIf="isLogging" ></xergor-header>
+<xergor-body [g_collapsed]="isSideNavCollapsed" [g_screenWidth]="screenWidth" *ngIf="isLogging" ></xergor-body>
+<app-login (g_userLogin)="onDbAuth($event)"></app-login>
 <xergor-alert></xergor-alert>

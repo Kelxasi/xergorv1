@@ -1,25 +1,24 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterContentChecked, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { catchError, throwError } from 'rxjs';
 import { IDistrict } from 'src/xergor/shared/models/district.model';
 import { IPager } from 'src/xergor/shared/models/pager.model';
 import { ConfigurationService } from 'src/xergor/shared/services/configuration.service';
-import { DistrictService } from './district.service';
-
+import { DistrictService } from '../district.service';
+  
 @Component({
   selector: 'app-district-list',
   templateUrl: './district-list.component.html',
   styleUrls: ['./district-list.component.scss']
 })
 
-export class DistrictListComponent implements OnInit,OnDestroy {
+export class DistrictListComponent implements OnInit,OnDestroy  {
   district!: IDistrict;
   paginationInfo!: IPager;
   errorReceived!: boolean;
 
-  constructor(private g_router: Router,private service: DistrictService, private configurationService: ConfigurationService) { }
-
-
+  constructor(private g_router: Router,private service: DistrictService, private configurationService: ConfigurationService ) { }
+ 
   onNotifySelected(selectedRows: any) {
     console.log(selectedRows);
   }
@@ -59,7 +58,7 @@ export class DistrictListComponent implements OnInit,OnDestroy {
   }
 
   routeLink(l_id: number){
-    this.g_router.navigate(['settings/district/detail/'+l_id]);
+    this.g_router.navigate(['settings/districts/'+l_id]);
   }
 }
 

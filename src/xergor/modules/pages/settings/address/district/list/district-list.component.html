@@ -23,12 +23,12 @@
         </a>
       </div>
     </div>
+    <mat-paginator [length]="100"
+              [pageSize]="10"
+              [pageSizeOptions]="[5, 10, 25, 100]"
+              aria-label="Select page">
+</mat-paginator>
   </div>
-  
-  <div *ngIf="!district || !district?.data || (district?.data && district?.data?.length == 0)">
-    <span>Liste Boş</span>
-  </div>
-  
   <ng-template  #settingsOverlay>
     <div class="overlay overlay-settings overlay-fall" cdkMenu>
         <ul>

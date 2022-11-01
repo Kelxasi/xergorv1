@@ -12,8 +12,7 @@ import { CommonModule } from '@angular/common';
 import { BodyComponent } from './modules/layout/body/body.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
-import { DistrictListComponent } from './modules/pages/settings/district-list/district-list.component';
-import { DistrictModule } from './modules/pages/settings/district-list/district.module';
+import { LoginComponent } from './modules/pages/settings/login/login.component';
 
 const prefersReducedMotion = typeof matchMedia === 'function' ? matchMedia('(prefers-reduced-motion)').matches : false;
 
@@ -22,7 +21,8 @@ const prefersReducedMotion = typeof matchMedia === 'function' ? matchMedia('(pre
     XergorComponent,
     SidenavComponent,
     HeaderComponent,
-    BodyComponent
+    BodyComponent,
+    LoginComponent
   ],
   imports: [
     CommonModule,

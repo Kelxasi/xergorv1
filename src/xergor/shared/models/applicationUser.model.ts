@@ -24,3 +24,8 @@ export interface IApplicationUser {
     employeeId: number;
     inUse: number;
 }
+
+export interface ILoginComponent {
+    authUser: IApplicationUser;
+    isLoggin: boolean;
+}

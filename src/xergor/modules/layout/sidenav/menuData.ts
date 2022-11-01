@@ -20,7 +20,7 @@ export const menuItemData = [
     ]
   },
   {
-    menuName: 'Settings Menu',
+    menuName: 'Settings',
     icon: 'settings',
     opened: false,
     menuCategory : [
@@ -55,11 +55,11 @@ export const menuItemData = [
           categoryDetail: [
             {
               name: 'List',
-              routeLink: 'settings/district/list'
+              routeLink: 'settings/districts'
             },
             {
               name: 'New',
-              routeLink: 'settings/district/detail/0'
+              routeLink: 'settings/districts/0'
             }
           ]
        }

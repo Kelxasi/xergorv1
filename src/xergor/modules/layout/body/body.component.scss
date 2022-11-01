@@ -8,6 +8,7 @@
     transition: all .5s ease;
     background: #f4f7fa;
     padding: 3rem;
+
 }
 
 .xergor-body-trimmed {
@@ -20,3 +21,21 @@
     margin-left: 5.5rem;
 }
 
+
+.loader-container {
+    position: fixed;
+    width: 100%;
+    z-index: 99;
+  }
+
+::ng-deep .mat-progress-bar-fill::after {
+    background-color: #024554;
+}
+
+::ng-deep .mat-progress-bar-buffer {
+    background: #E4E8EB;
+}
+
+::ng-deep .mat-progress-bar {
+    border-radius: 2px;
+}

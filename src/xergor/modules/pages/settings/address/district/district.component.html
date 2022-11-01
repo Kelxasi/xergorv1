@@ -1,25 +1,28 @@
-<div class="vet-container-viewer-wrapper">
+<div class="xergor-container-viewer-wrapper">
     <form [formGroup]="f_districtForm" (ngSubmit)="onSubmit()">
-        <div class="vet-container-viewer-title">
-            <div class="vet-container-viewer-title-spacer">İlçe Kartı</div>
-            <button mat-icon-button type="submit" [disabled]="!f_districtForm.valid || !f_districtForm.dirty" [attr.aria-label]="" matTooltip="Kaydet"
+        <div class="xergor-container-viewer-title">
+            <div class="xergor-container-viewer-title-spacer">İlçe Kartı</div>
+            <button mat-icon-button type="button" matTooltip="Geri" aria-label="Geri" (click)="back()">
+                <mat-icon>arrow_back</mat-icon>
+            </button>  
+            <button mat-icon-button type="submit" [disabled]="!f_districtForm.valid || !f_districtForm.dirty" matTooltip="Kaydet"
                 (ngSubmit)="onSubmit()">
-                <mat-icon [ngClass]="getPulseClass()">done</mat-icon>
+                <mat-icon>done</mat-icon>
             </button>
             <button mat-icon-button type="button" matTooltip="Sil" [disabled]="f_isAddMode" aria-label="Sil" (click)="delete(district!.id)">
                 <mat-icon>delete</mat-icon>
             </button>
-            <button mat-icon-button type="button" aria-label="Yenile" [disabled]="f_isAddMode">
+            <button mat-icon-button type="button" aria-label="Yenile" [disabled]="f_isAddMode" (click)="refreshContent()">
                 <mat-icon>refresh</mat-icon>
             </button>
         </div>
-        <div class="vet-container-source">
+        <div class="xergor-container-source">
             <mat-tab-group disableRipple="true">
                 <mat-tab label="Genel">
                     <mat-card>
                         <mat-card-content>
                             <section class="form-field-contaier ">
-                                <mat-checkbox [ngClass]="{ 'is-invalid': submitted }" color="primary"  formControlName="inUse"
+                                <mat-checkbox [ngClass]="{ 'is-invalid': submitted }"  formControlName="inUse"
                                     labelPosition="after"> Kullanımda </mat-checkbox>
                             </section>
                             <section class="form-field-contaier ">
